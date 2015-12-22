@@ -1,4 +1,4 @@
-/*rotation.c contains tools for encryption and decryption using a 
+/* rotation.c contains tools for encryption and decryption using a 
 	rotation cipher*/
 
 // constants for ascii values of letters
@@ -29,7 +29,6 @@ void encryptRotation(int offset, char* cleartext) {
 		cleartext++;
 	}
 }
-	
 	
 /*
 decryptRotation takes in an integer representing a character offset, and

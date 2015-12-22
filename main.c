@@ -2,39 +2,36 @@
 #include <stdlib.h>
 #include "rotation.c"
 #include "frequency.c"
+#include "fileio.c"
 
-int stringLength(char* string) {
-	int length = 0;
-	while (*string) {
-		string++;
-		length++;
-	}
-	return length;
-}
-	
-char* cloneString(char* string) {
-	char* clone = malloc(sizeof(char) * (stringLength(string) + 1));
-	char* out = clone;
-	while (*string) {
-		*clone = *string;
-		clone++;
-		string++;
-	}
-	*clone = 0;
-	return out;
+int offset = 7;
+
+void encryptFixedRotation(char* string) {
+	return encryptRotation(offset, string);
 }
 
-void deleteClone(char* clone) {
-	free(clone);
+void decryptFixedRotation(char* string) {
+	decryptRotation(offset, string);
 }
 
 int main() {
-	char* string = "This is a test message";
-	char* message = cloneString(string);
-	printf("Cleartext: %s\n", message);
-	encryptRotation(13, message);
-	printf("Ciphertext: %s\n", message);
-	decryptRotation(13, message);
-	printf("Transmission: %s\n", message);
-	deleteClone(message);
+	char* clear_path = "testingclear";
+	char* cipher_path = "testingcipher";
+	char* transmit_path = "testingtransmission";
+	
+	setInput(clear_path);
+	setOutput(cipher_path);
+	
+	transmitData(&encryptFixedRotation);
+	
+	closeInput();
+	closeOutput();
+	
+	setInput(cipher_path);
+	setOutput(transmit_path);
+	
+	transmitData(&decryptFixedRotation);
+	
+	closeInput();
+	closeOutput();
 }
