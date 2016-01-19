@@ -1,5 +1,7 @@
-// fileio.c contains tools for taking input from and outputting to 
-//	   text files
+/* 
+fileio.c contains tools for taking input from and outputting to 
+	text files
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -158,8 +160,10 @@ closeInput: Void -> Void
 Effects: file pointed to by input is closed, input is set to null
 */
 void closeInput() {
-	fclose(input);
-	input = NULL;
+	if (input) {
+		fclose(input);
+		input = NULL;
+	}
 }
 
 /*
@@ -168,8 +172,10 @@ closeOutput: Void -> Void
 Effects: file pointed to by output is closed, output is set to null
 */
 void closeOutput() {
-	fclose(output);
-	output = NULL;
+	if (output) {
+		fclose(output);
+		output = NULL;
+	}
 }
 
 /*

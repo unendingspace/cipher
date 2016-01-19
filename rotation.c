@@ -1,5 +1,7 @@
-/* rotation.c contains tools for encryption and decryption using a 
-	rotation cipher*/
+/* 
+rotation.c contains tools for encryption and decryption using a 
+	rotation cipher
+*/
 
 // constants for ascii values of letters
 static int a_idx = (int) 'a';

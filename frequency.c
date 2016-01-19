@@ -1,4 +1,6 @@
-// frequency.c contains tools for letter frequency analysis
+/*
+frequency.c contains tools for letter frequency analysis
+*/
 
 /*
 letterCounter is a structure for keeping track of how many times a
